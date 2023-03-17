@@ -6,16 +6,9 @@ class Database
     public $connection;
     public $opt;
 
-    public function __construct()
+    public function __construct($config, $username = 'root', $password = '')
     {
-        $host = '127.0.0.1';
-        $port = '3306';
-        $db = 'demo';
-        $user = 'root';
-        // $pass = '';
-        $charset = 'utf8mb4';
-
-        $dsn = "mysql:host=$host;port=$port;dbname=$db;user=$user;charset=$charset";
+        $dsn = 'mysql:' . http_build_query($config, '', ';');
         
         $this->opt = [
             PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
@@ -23,13 +16,13 @@ class Database
             PDO::ATTR_EMULATE_PREPARES => false,
         ];
 
-        $this->connection = new PDO($dsn);
+        $this->connection = new PDO($dsn, $username, $password, $this->opt);
     }
+
     public function query($query)
     {
-        
-
         $statement = $this->connection->prepare($query, $this->opt);
+
         $statement->execute();
 
         return $statement;
