@@ -19,11 +19,11 @@ class Database
         $this->connection = new PDO($dsn, $username, $password, $this->opt);
     }
 
-    public function query($query)
+    public function query($query, $params = [])
     {
         $statement = $this->connection->prepare($query, $this->opt);
 
-        $statement->execute();
+        $statement->execute($params);
 
         return $statement;
 
