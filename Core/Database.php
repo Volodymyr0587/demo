@@ -1,10 +1,14 @@
 <?php
 
-// connect to our MySQL database and execute a qwery.
+namespace Core;
+
+use PDO;
+
+// connect to our MySQL database and execute a query.
 class Database
 {
-    public $connection;
-    public $opt;
+    public PDO $connection;
+    public array $opt;
     public $statement;
 
     public function __construct($config, $username = 'root', $password = '')
@@ -20,7 +24,7 @@ class Database
         $this->connection = new PDO($dsn, $username, $password, $this->opt);
     }
 
-    public function query($query, $params = [])
+    public function query($query, $params = []): static
     {
         $this->statement = $this->connection->prepare($query, $this->opt);
 
