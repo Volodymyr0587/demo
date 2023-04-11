@@ -18,8 +18,6 @@ if (! $form->validate($email, $password)) {
     ]);
 }
 
-
-
 // match the credentials
 $user = $db->query('select * from users where email = :email', [
     'email' => $email
