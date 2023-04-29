@@ -2,3 +2,4 @@ demo.code-workspace
 .project
 .vscode/
 .idea/
+/vendor/

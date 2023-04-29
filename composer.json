@@ -1,0 +1,16 @@
+{
+    "name": "volodymyr/demo",
+    "authors": [
+        {
+            "name": "Volodymyr Honcharov",
+            "email": "ladimirvm87@gmail.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Core\\": "Core/",
+            "Http\\": "Http/"
+        }
+    }
+}
